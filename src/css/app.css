@@ -1,0 +1,27 @@
+@import "plan-list.css";
+@import "plan.css";
+@import "buttons.css";
+
+*,
+*::before,
+*::after {
+  /* 这样全局都是 DongXue 字体 */
+  font-family: "DongXue";
+  /* 来一个怪异盒模型 */
+  box-sizing: border-box;
+}
+
+:root {
+  /* 把字体调整得大一点 */
+  font-size: 25px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* 这个小部件很有用！比如两个按钮之间的间隔 */
+.mr-1 {
+  margin-right: 10px;
+}

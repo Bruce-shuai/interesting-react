@@ -1,0 +1,42 @@
+.plan {
+  padding: 1em 0;
+  border-bottom: 1px solid black;
+}
+
+/* 这里的伪类使用得酷毙了 */
+.plan:last-child {
+  border-bottom: none;
+}
+
+.plan__header {
+  display: flex;
+  padding: 0 1em;
+  justify-content: space-between;
+}
+
+.plan__title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding-bottom: 1em;
+}
+
+.plan__row {
+  padding: 0.2em 1em;
+}
+
+.plan__label {
+  font-size: 1.2rem;
+}
+
+.plan__value {
+}
+
+.plan__label--special {
+  font-weight: 600;
+}
+
+.plan__value--special {
+  padding-left: 1em;
+  padding-top: 0.5em;
+  white-space: pre-wrap; /* 这里的用法最妙！！*/
+}

@@ -1,0 +1,20 @@
+.plan-list {
+  width: 50%;
+  min-height: 100vh;
+  position: relative;
+  padding: 0.5em 0;
+  border-right: 0.1em solid black;
+}
+
+.plan-list__title {
+  font-size: 2rem;
+  padding-bottom: 0.8em;
+}
+
+.plan-list__add-plan-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 1em;
+}
