@@ -6,3 +6,10 @@
 ...
 
 [随机 id 生成：uuid](https://www.npmjs.com/package/uuid)
+
+#### 技术细节
+
+font-size 使用 rem 单位
+其余更多使用 em 单位
+
+非常细小的内容使用的是 px 单位

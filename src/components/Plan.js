@@ -1,13 +1,17 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import { PlansContext } from './App.js'
 
 export default function Plan(props) {
   const {
+    id,
     title,
     startTime,
     endTime,
     instructions,
     specificItems
   } = props;
+
+  const { handlePlanDelete, handlePlanSelect } = useContext(PlansContext);
   return (
     <div className="plan">
       <div className="plan__header">
@@ -16,8 +20,14 @@ export default function Plan(props) {
         </div>
         {/* 注意，不是每一个div标签后面都需要 className */}
         <div>
-          <button className="btn btn--primary mr-1">编辑</button>
-          <button className="btn btn--danger">删除</button>
+          <button 
+            className="btn btn--primary mr-1"
+            onClick={() => handlePlanSelect(id)}
+          >编辑</button>
+          <button 
+            className="btn btn--danger"
+            onClick={() => handlePlanDelete(id)}
+          >删除</button>
         </div>
       </div>
       <div className="plan__row">   {/* 这种row的格式非常不错！*/}

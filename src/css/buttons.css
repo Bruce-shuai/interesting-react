@@ -1,14 +1,14 @@
 .btn {
   border: none;
   font-size: inherit;
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 5px 20px;
   cursor: pointer;
 }
 
 .btn--primary {
   color: white;
-  background-color: hsl(210, 100%, 50%);
+  background-color: hsl(200, 100%, 50%);
 }
 
 .btn--primary:hover {
@@ -40,5 +40,21 @@
   border: none;
   color: black;
   cursor: pointer;
+  font-weight: 600;
   font-size: 1.5rem;
+}
+
+.btn--remove-red {
+  padding: 0 15px;
+  margin-left: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: white;
+  border-radius: 10px;
+  background-color: hsl(0, 100%, 50%);
+}
+
+.btn--remove-red:hover {
+  background-color: hsl(0, 100%, 35%);
 }

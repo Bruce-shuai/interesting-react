@@ -1,14 +1,17 @@
 import '../css/app.css';   // 导入css模块  不再使用CSS-in-JS了 使用BEM命名方式
-import PlanList from './PlanList';
 import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import PlanList from './PlanList';
+import PlanEdit from './PlanEdit';
 
 export const PlansContext = React.createContext();
 
 function App() {
-
+  document.title="Interesting React"
   const [plans, setPlans] = useState(SAMPLE_PLANS);
-  // console.log('plans', plans);
+  const [selectedPlanId, setSelectedPlanId] = useState();
+  const selectedPlan = plans.find(plan => plan.id === selectedPlanId);   // 这里的数据就不必用useState了,因为只需在一处地方更新数据，且只会在每次刷新组件时更新数据
+  // console.log('selectedPlan', selectedPlan);
 
   // 将数据存入 localStorage 防止页面刷新的时候，数据凉凉(一个关键点，存放在localStorage里的数据应该是JSON字符串类型)
   // 但好像JSON字符串不能存放函数...这可能会是一个问题！
@@ -44,12 +47,47 @@ function App() {
     setPlans([...plans, newPlan])
   }
 
+  /**
+   * 删
+   * 删除计划
+   */
+  function handlePlanDelete(id) {
+    const newPlans = plans.filter(plan => plan.id !== id);
+    setPlans(newPlans);
+  }
+
+  /**
+   * 改
+   * 修改计划
+   */
+  function handlePlanEdit(newPlan) {
+    const planindex = plans.findIndex((plan) => plan.id === newPlan.id);
+    setPlans(prevPlans => {
+      const newPlans = prevPlans.map((plan, index) => {
+        if (index === planindex) {
+          return {...plan, ...newPlan}
+        }
+        return plan
+      })
+      return newPlans;
+    })
+  }
+
+  function handlePlanSelect(id) {
+    setSelectedPlanId(id);
+  }
+
   const plansContextValue = {
     handlePlanAdd,
+    handlePlanDelete,
+    handlePlanSelect,
+    handlePlanEdit,
   }
   return (
     <PlansContext.Provider value={plansContextValue}>
       <PlanList plans={plans}/>
+      {/* {selectedPlanId && <PlanEdit {...selectedPlan}/>}     */} {/* 一般解构值都是用来显示数据的...   这个可以用来做笔记~ */}
+      {selectedPlanId && <PlanEdit plan={selectedPlan}/>}      {/* 因为后面要修改selectedPlan的数据，所以不要使用解构。因为常量值是无法进行修改的*/}
     </PlansContext.Provider>
   );
 }

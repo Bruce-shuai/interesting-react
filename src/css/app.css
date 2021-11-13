@@ -1,6 +1,7 @@
+@import "buttons.css";
 @import "plan-list.css";
 @import "plan.css";
-@import "buttons.css";
+@import "plan-edit.css";
 
 *,
 *::before,
