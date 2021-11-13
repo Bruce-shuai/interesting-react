@@ -46,21 +46,3 @@
   font-size: 1.5rem;
   margin-bottom: 0.5em;
 }
-
-.plan-edit__specific-item {
-  display: flex;
-  margin: 1em 0;
-}
-
-.plan-edit__specific-item-input {
-  /* margin-right: auto; */
-  width: 90%;
-  border-style: double;
-}
-
-.plan-edit__add-item-btn-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 1em;
-}

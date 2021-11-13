@@ -1,16 +1,20 @@
-import React, {useState, useContext, useEffect} from 'react'
+import React, {useState, useContext, useEffect, useMemo} from 'react'
 import { PlansContext } from './App'
+import PlanSpecificList from './PlanSpecificList';
+
+
 export default function PlanEdit({plan}) {
-  // const {
-  //   title,
-  //   startTime,
-  //   endTime,
-  //   instructions,
-  //   specificItems
-  // } = props;
 
   const [newPlan, setNewPlan] = useState(plan);
-  const {handlePlanEdit} = useContext(PlansContext);
+  const {handlePlanEdit, handlePlanSelect} = useContext(PlansContext);
+  const changePlan = useMemo(() => {
+    return {...plan}
+  }, [plan?.id])
+ 
+  // 用于每次plan变化，需要让edit页面有对应的内容
+  useEffect(() => {
+    setNewPlan(changePlan) 
+  }, [changePlan])
 
   useEffect(() => {
     handlePlanEdit(newPlan) 
@@ -19,7 +23,9 @@ export default function PlanEdit({plan}) {
   return (
     <div className="plan-edit"> 
       <div className="plan-edit__remove-edit-btn-container">
-        <button className="btn btn--remove">&times;</button>
+        <button className="btn btn--remove"
+          onClick={() => {handlePlanSelect(undefined)}}
+        >&times;</button>
       </div>
       
       <div className="plan-edit__details-grid">
@@ -49,17 +55,7 @@ export default function PlanEdit({plan}) {
         <div className="plan-edit__specific-items-title">
           计划细节
         </div>
-        <div className="plan-edit__specific-item">
-          <input className="plan-edit__value plan-edit__specific-item-input" placeholder="添加亿点细节~"/>
-          <button className="btn btn--remove-red">&times;</button>
-        </div>
-        <div className="plan-edit__specific-item">
-          <input className="plan-edit__value plan-edit__specific-item-input" placeholder="添加亿点细节~"/>
-          <button className="btn btn--remove-red">&times;</button>
-        </div>
-        <div className="plan-edit__add-item-btn-container">
-          <button className="btn btn--add">添加新细节</button>
-        </div>
+        {plan && <PlanSpecificList plan={plan} setNewPlan={setNewPlan}/>}
       </div>
     </div>
   )

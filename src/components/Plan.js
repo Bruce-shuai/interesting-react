@@ -10,7 +10,6 @@ export default function Plan(props) {
     instructions,
     specificItems
   } = props;
-
   const { handlePlanDelete, handlePlanSelect } = useContext(PlansContext);
   return (
     <div className="plan">
