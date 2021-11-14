@@ -1,7 +1,7 @@
 ### 技术栈
 
 第一阶段：纯 React + CSS(BEM + CSS 模块导入[这个我还不太明白...])
-第二阶段：React + firebase(实现用户认证)
+第二阶段：React + firebase(实现用户认证) + react-router-dom v6 (已经发布正式稳定版本了~)
 第三阶段：TailwindCSS + Antd + ...
 ...
 
@@ -18,7 +18,8 @@ font-size 使用 rem 单位
 
 目前还不支持响应式布局。之后再弄...  
 photo edit 任意选择本地图片功能还未弄...
-开始利用`firebase`实现用户登录认证 + 添加一个`antd`来实现表单，因为自己来写表单真的太麻烦了...
+开始利用`firebase`实现用户登录认证 + 添加一个`antd`来实现表单，因为自己来写表单真的太麻烦了... ✅
+开始使用 `react-router-dom(第六版本)` 来实现项目的多页面跳转 ---> `react-router-v6`已经正式发布了...还有了相关的[正式文档](https://reactrouter.com/docs/en/v6)！
 
 #### 思考
 

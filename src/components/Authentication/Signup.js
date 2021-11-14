@@ -1,20 +1,24 @@
 import {useState} from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
 export default function Signup() {
   const [error, setError] = useState('')
+  const [success, setSuccess] = useState('')
   const [loading, setLoading] = useState(false)
   const {signup} = useAuth();
   const onFinish =  async ({email, password}) => {
     try {
       setError('');
+      setSuccess('');
       setLoading(true)
       await signup(email, password);  // 注意，这里返回的是promise
+      setSuccess('成功注册!');
     } catch(e) {
       if (e.message === 'Firebase: The email address is badly formatted. (auth/invalid-email).') {
-        setError('您的邮箱格式错误！');
+        setError('注册失败：您的邮箱格式错误！');
       }
       else {
         setError(e.message);
@@ -33,7 +37,8 @@ export default function Signup() {
     <div className="auth__container">
       <div className="auth__form">
         <div className="auth__form-title">注册</div>
-        {error && <div className={`info ${error ? 'info--error' : 'info--success'} tr-2`}>{error}</div>}
+        {error && <div className="info info--error tr-2">{error}</div>}
+        {success && <div className="info info--success tr-2">{success}</div>}
         <Form
           name="basic"
           labelCol={{
@@ -117,9 +122,8 @@ export default function Signup() {
             提交
           </Button>
         </Form.Item>
-
         </Form>
-        <div className="auth__jump">已经有账户？登录</div>
+        <div className="auth__jump">已有账户？<Link to="/login">登录</Link></div>
       </div>
     </div>
   )
