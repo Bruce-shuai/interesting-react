@@ -1,0 +1,20 @@
+.info {
+  font-size: 0.6rem;
+  width: 18em;
+  padding: 0.5em;
+  margin: 1em;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.info--error {
+  color: white;
+  background-color: hsla(0, 100%, 50%, 85%);
+  border: 1px solid red;
+}
+
+.info--success {
+  color: white;
+  background-color: hsla(100, 100%, 30%, 85%);
+  border: 1px solid green;
+}

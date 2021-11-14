@@ -1,6 +1,12 @@
 /* button */
 @import "./buttons.css";
 
+/* info */
+@import "./info.css";
+
+/* authentication */
+@import "./authentication/auth.css";
+
 /* plans */
 @import "./plans/plan-edit.css";
 @import "./plans/plan-list.css";
@@ -34,4 +40,8 @@ body {
 /* 这个小部件很有用！比如两个按钮之间的间隔 */
 .mr-1 {
   margin-right: 10px;
+}
+
+.tr-2 {
+  transform: translate(20px);
 }
