@@ -22,3 +22,17 @@
 .auth__jump {
   text-align: center;
 }
+
+.auth-profile {
+  padding: 2em;
+  border-radius: 10px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-profile__title {
+  font-size: 2rem;
+}

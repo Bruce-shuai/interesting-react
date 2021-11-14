@@ -33,6 +33,15 @@
   background-color: hsl(110, 100%, 40%);
 }
 
+.btn--hollow {
+  border: 1px solid black;
+  background-color: transparent;
+}
+
+.btn--hollow:active {
+  transform: scale(0.8);
+}
+
 .btn--remove {
   padding: 0;
   background: none;

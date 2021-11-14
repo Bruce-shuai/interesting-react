@@ -42,6 +42,10 @@ body {
   margin-right: 10px;
 }
 
+.mt-1 {
+  margin-top: 1em;
+}
+
 .tr-2 {
   transform: translate(20px);
 }

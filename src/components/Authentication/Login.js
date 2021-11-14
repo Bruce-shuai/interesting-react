@@ -3,7 +3,9 @@ import { useState } from 'react';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Link } from "react-router-dom";
 import { useAuth } from '../../context/AuthContext';
+import { useNavigate } from "react-router-dom";
 export default function Login() {
+  let navigate = useNavigate();
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
   const [loading, setLoading] = useState(false)
@@ -16,6 +18,11 @@ export default function Login() {
       setLoading(true)
       await login(email, password);  // 注意，这里返回的是promise
       setSuccess('登录成功!')
+      // navigate('/')
+      setTimeout(() => {
+        navigate('/')
+      }, 1000)
+      // clearTimeout(timer);
     } catch(e) {
       if (e.message === 'Firebase: The email address is badly formatted. (auth/invalid-email).') {
         setError('您的邮箱格式错误！');
@@ -25,6 +32,9 @@ export default function Login() {
       }
       else if (e.message === 'Firebase: The password is invalid or the user does not have a password. (auth/wrong-password).') {
         setError('您输入的密码有错误！')
+      }
+      else if (e.message === 'Firebase: A network AuthError (such as timeout, interrupted connection or unreachable host) has occurred. (auth/network-request-failed).') {
+        setError('网络中断！')
       }
       else {
         setError(e.message);

@@ -3,8 +3,10 @@ import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
+  let navigate = useNavigate();
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
   const [loading, setLoading] = useState(false)
@@ -16,9 +18,19 @@ export default function Signup() {
       setLoading(true)
       await signup(email, password);  // 注意，这里返回的是promise
       setSuccess('成功注册!');
+      setTimeout(() => {
+        navigate('/login')
+      }, 1000)
+      // clearTimeout(timer);
     } catch(e) {
       if (e.message === 'Firebase: The email address is badly formatted. (auth/invalid-email).') {
         setError('注册失败：您的邮箱格式错误！');
+      }
+      else if (e.message === 'Firebase: Password should be at least 6 characters (auth/weak-password).') {
+        setError('密码至少设置为6位数字或字符！');
+      }
+      else if (e.message === 'Firebase: The email address is already in use by another account. (auth/email-already-in-use).') {
+        setError('此邮箱已注册账号!')
       }
       else {
         setError(e.message);
@@ -32,6 +44,7 @@ export default function Signup() {
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
+  // console.log('auth', useAuth().currentUser)
 
   return (
     <div className="auth__container">
