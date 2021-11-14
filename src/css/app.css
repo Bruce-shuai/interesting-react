@@ -1,12 +1,16 @@
+/* button */
+@import "./buttons.css";
+
 /* plans */
-@import "./plans/buttons.css";
 @import "./plans/plan-edit.css";
 @import "./plans/plan-list.css";
 @import "./plans/plan-specific-items.css";
 @import "./plans/plan.css";
 
 /* photo-edit */
-@import "./photo-edit/phtot-edit-container.css";
+@import "./photo-edit/phtoto-edit-container.css";
+@import "./photo-edit/photo-edit-siderbar-item.css";
+@import "./photo-edit/photo-edit-slider.css";
 
 *,
 *::before,

@@ -1,0 +1,37 @@
+.photo-edit-slider__container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.photo-edit-slider__value {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.photo-edit-slider__range {
+  width: 80%;
+  -webkit-appearance: none;
+}
+
+.photo-edit-slider__range::-webkit-slider-runnable-track {
+  height: 15px;
+  border-radius: 10px; /*将轨道设为圆角的*/
+  background: grey;
+  box-shadow: 0 1px 1px #def3f8, inset 0 0.125em 0.125em #0d1112;
+}
+
+.photo-edit-slider__range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 25px;
+  width: 15px;
+  margin-top: -5px; /*使滑块超出轨道部分的偏移量相等*/
+  background: black;
+  border-radius: 24%; /*外观设置为圆形*/
+  border: solid 0.125em rgba(205, 224, 230, 0.5); /*设置边框*/
+}

@@ -1,5 +1,5 @@
 import React, {useState, useContext, useEffect, useMemo} from 'react'
-import { PlansContext } from './index'
+import { PlansContext } from './Index'
 import PlanSpecificList from './PlanSpecificList';
 
 

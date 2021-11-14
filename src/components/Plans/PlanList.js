@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import Plan from './Plan';
-import { PlansContext } from './index';
+import { PlansContext } from './Index';
 export default function PlanList({plans}) {
 
   const { handlePlanAdd } = useContext(PlansContext);

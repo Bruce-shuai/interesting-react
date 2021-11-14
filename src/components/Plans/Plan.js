@@ -1,5 +1,5 @@
 import React, {useContext} from 'react'
-import { PlansContext } from './index.js'
+import { PlansContext } from './Index.js'
 
 export default function Plan(props) {
   const {
