@@ -1,15 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import SidebarItem from './SidebarItem';
 import Slider from './Slider';
 import defaultPhoto from '../../img/avatar.jpg';
 // import anotherPhoto from '/static/media/avatar.c29a324f.jpg';
 export default function PhotoEdit() {
-  // 目前还不支持响应式布局。之后再弄...
 
   const [options, setOptions] = useState(DEFAULT_OPTIONS);
   // const [photo, setPhoto] = useState(defaultPhoto);
   const [sidebarIndex, SetSidebarIndex] = useState(0);
   const checkedOption = options[sidebarIndex];     // 这里的用法比较有意思...
+
+
+  /**
+   * 将Photo Edit的数据存放在localStorage里的key值里去
+   */
+  const PHOTO__EDIT__DATA__KEY = 'photo-edit-data-key';
+  useEffect(() => {
+    localStorage.getItem(PHOTO__EDIT__DATA__KEY) && setOptions(JSON.parse(localStorage.getItem(PHOTO__EDIT__DATA__KEY)))
+  }, [])
+   
+  useEffect(() => {
+    const PHOTO__EDIT__DATA__VALUE = JSON.stringify(options)
+    localStorage.setItem(PHOTO__EDIT__DATA__KEY,PHOTO__EDIT__DATA__VALUE)
+  }, [options])
+   
 
   // console.log('photo', photo);
   // 又是增删改查方法

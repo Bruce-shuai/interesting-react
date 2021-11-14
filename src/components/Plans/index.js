@@ -7,7 +7,6 @@ import PlanEdit from './PlanEdit';
 export const PlansContext = React.createContext();
 
 function Plans() {
-  document.title="Interesting React"
   const [plans, setPlans] = useState(SAMPLE_PLANS);
   const [selectedPlanId, setSelectedPlanId] = useState();
   const selectedPlan = plans.find(plan => plan.id === selectedPlanId);   // 这里的数据就不必用useState了,因为只需在一处地方更新数据，且只会在每次刷新组件时更新数据
