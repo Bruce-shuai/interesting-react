@@ -6,6 +6,8 @@ import AuthProvider from "../context/AuthContext";
 import Dashboard, {RequireAuth} from "./Authentication/Dashboard";
 import { Routes, Route, Navigate } from "react-router-dom";
 import {useAuth} from '../context/AuthContext';
+import ForgetPassword from "./Authentication/ForgetPassword";
+import UpdateProfile from "./Authentication/UpdateProfile";
 // import PrivateRoute from "./PrivateRoute";
 function App() {
   document.title="Interesting React"
@@ -20,6 +22,8 @@ function App() {
         } />
         <Route path="signup" element={<Signup />} />
         <Route path="login" element={<Login />} />
+        <Route path="forget-password" element={<ForgetPassword />} />
+        <Route path="update-profile" element={<UpdateProfile />} />
       </Routes>
     </AuthProvider>
   );

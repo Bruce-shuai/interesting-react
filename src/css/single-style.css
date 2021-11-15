@@ -1,0 +1,31 @@
+/* 这个小部件很有用！比如两个按钮之间的间隔 */
+.mr-1 {
+  margin-right: 10px;
+}
+
+.mt-1 {
+  margin-top: 1em;
+}
+
+.tr-2 {
+  transform: translate(20px);
+}
+
+.tl-1 {
+  transform: translate(-10px);
+}
+
+.tl-2 {
+  transform: translate(-20px);
+}
+
+.ta-center {
+  text-align: center;
+}
+
+/* .border-green {
+  border: 1px solid #1da57a;
+  padding: 0.4em 0.6em;
+  border-radius: 5px;
+  margin: 1em;
+} */

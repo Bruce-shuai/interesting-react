@@ -111,10 +111,21 @@ export default function Login() {
         }}
       >
         <Button type="primary" htmlType="submit" loading={loading}>
-          提交
+          确认
+        </Button>
+      </Form.Item>
+      <Form.Item    // 这个到时候可能会改一下...
+        wrapperCol={{
+          offset: 8,
+          span: 16,
+        }}
+      >
+        <Button type="primary" danger htmlType="button" className="tl-1">
+          <Link to="/forget-password" className="border-green">忘记密码</Link>
         </Button>
       </Form.Item>
       </Form>
+
       <div className="auth__jump">没有账户？<Link to="/signup">注册</Link></div>   {/* 注意：这里的Link路径加上 '/' 和 不加 '/' 有明显的区别哦~*/}
       </div>
     </div>

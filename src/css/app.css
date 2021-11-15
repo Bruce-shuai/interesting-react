@@ -1,3 +1,6 @@
+/* single-style */
+@import "./single-style.css";
+
 /* button */
 @import "./buttons.css";
 
@@ -35,17 +38,4 @@
 body {
   margin: 0;
   padding: 0;
-}
-
-/* 这个小部件很有用！比如两个按钮之间的间隔 */
-.mr-1 {
-  margin-right: 10px;
-}
-
-.mt-1 {
-  margin-top: 1em;
-}
-
-.tr-2 {
-  transform: translate(20px);
 }
