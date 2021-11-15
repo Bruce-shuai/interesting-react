@@ -10,6 +10,9 @@
 /* authentication */
 @import "./authentication/auth.css";
 
+/* HomePage */
+@import "./home/home.css";
+
 /* plans */
 @import "./plans/plan-edit.css";
 @import "./plans/plan-list.css";
