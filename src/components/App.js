@@ -5,11 +5,10 @@ import Login from "./Authentication/Login";
 import AuthProvider from "../context/AuthContext";
 import Dashboard, {RequireAuth} from "./Authentication/Dashboard";
 import { Routes, Route, Navigate } from "react-router-dom";
-import {useAuth} from '../context/AuthContext';
 import ForgetPassword from "./Authentication/ForgetPassword";
 import UpdateProfile from "./Authentication/UpdateProfile";
 import HomePage from "./HomePage";
-
+import NotFound from "./NotFound";
 
 // import PrivateRoute from "./PrivateRoute";
 function App() {
@@ -23,8 +22,11 @@ function App() {
       {/* 注意：这里是需要重定向的(当用户还没登录的时候) 这里才用的是react-router-v6的新方法 */}
       <Routes> 
         {/* 主页 */}
-        <Route path="/" element={<HomePage />} />
-
+        <Route path="/" element={
+          <RequireAuth redirectTo="/login">
+            <HomePage />
+          </RequireAuth>
+        } />
         {/* 个人身份认证页 */}
         <Route path="/profile" element={
           <RequireAuth redirectTo="/login">
@@ -35,12 +37,12 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route path="forget-password" element={<ForgetPassword />} />
         <Route path="update-profile" element={<UpdateProfile />} />
-
         {/* 计划列表页 */}
         <Route path="plans" element={<Plans />} />
-
         {/* 图片编辑页 */}
         <Route path="photo-edit" element={<PhotoEdit />} />
+        {/* 404 Not Found */}
+        <Route path="*" element={<NotFound />}/>
       </Routes>
     </AuthProvider>
   );

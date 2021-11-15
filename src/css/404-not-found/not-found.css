@@ -1,0 +1,9 @@
+.not-found__container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  font-size: 5rem;
+  font-weight: 700;
+  padding-top: 2.5em;
+}
