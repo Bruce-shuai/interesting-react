@@ -16,11 +16,17 @@ function App() {
   document.title="Interesting React"
   return (
     <AuthProvider>
-      <HomePage />
+      {/* <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes> */}
 
       {/* 注意：这里是需要重定向的(当用户还没登录的时候) 这里才用的是react-router-v6的新方法 */}
-      {/* <Routes>
-        <Route path="/" element={
+      <Routes> 
+        {/* 主页 */}
+        <Route path="/" element={<HomePage />} />
+
+        {/* 个人身份认证页 */}
+        <Route path="/profile" element={
           <RequireAuth redirectTo="/login">
             <Dashboard />
           </RequireAuth>
@@ -29,7 +35,13 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route path="forget-password" element={<ForgetPassword />} />
         <Route path="update-profile" element={<UpdateProfile />} />
-      </Routes> */}
+
+        {/* 计划列表页 */}
+        <Route path="plans" element={<Plans />} />
+
+        {/* 图片编辑页 */}
+        <Route path="photo-edit" element={<PhotoEdit />} />
+      </Routes>
     </AuthProvider>
   );
 }

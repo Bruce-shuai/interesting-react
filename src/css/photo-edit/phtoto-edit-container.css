@@ -1,21 +1,24 @@
 .photo-edit-container-grid {
   display: grid;
   grid-template-columns: 2fr 2fr 0.5fr;
-  grid-template-rows: 1fr 2.5fr 2.5fr 1.5fr;
+  grid-template-rows: 40px 0.8fr 2.5fr 2.5fr 1.5fr;
   grid-template-areas:
+    "a0 a0 a0"
     "a1 a1 a1"
     "a2 a2 a3"
     "a2 a2 a3"
     "a4 a4 a3";
   gap: 20px;
-  min-height: 100vh;
-  padding: 0 1em 1em 1em;
-  /* background-color: red; */
+  max-height: 100vh;
+  padding: 1em 8em;
+}
+
+.photo-edit__cancel {
+  grid-area: a0;
 }
 
 .photo-edit__title-container {
   grid-area: a1;
-  /* background-color: grey; */
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -26,6 +29,7 @@
   margin: 0;
   padding: 0;
   font-size: 4rem;
+  line-height: 0;
 }
 
 .photo-edit__photo-container {

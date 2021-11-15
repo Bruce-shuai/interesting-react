@@ -1,11 +1,15 @@
 import React, {useContext} from 'react';
 import Plan from './Plan';
 import { PlansContext } from './Index';
+import {Link} from 'react-router-dom';
 export default function PlanList({plans}) {
 
   const { handlePlanAdd } = useContext(PlansContext);
   return (
     <div className="plan-list">
+      <div className="cancel tl-1">
+        <button className="btn btn--remove"><Link to="/">&times;</Link></button>
+      </div>
       <div className="plan-list__title">
         计划列表
       </div>

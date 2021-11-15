@@ -121,7 +121,7 @@ export default function UpdateProfile() {
         </Form>
         <div className="ta-center">
         <Button type="primary" danger htmlType="button" className="tl-1">
-          <Link to="/" className="ta-center">取消</Link> 
+          <Link to="/profile" className="ta-center">取消</Link> 
         </Button>
         </div>
       </div>

@@ -51,6 +51,9 @@ export default function Login() {
   return (
     <div className="auth__container">
       <div className="auth__form">
+      <div className="cancel">
+        <button className="btn btn--remove"><Link to="/">&times;</Link></button>
+      </div>
       <div className="auth__form-title">登录</div>
       {error && <div className="info info--error tr-2">{error}</div>}
       {success && <div className="info info--success tr-2">{success}</div>}

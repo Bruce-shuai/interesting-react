@@ -29,3 +29,15 @@
   border-radius: 5px;
   margin: 1em;
 } */
+
+.font-color-black {
+  color: black;
+}
+
+.mr-auto {
+  margin-right: auto;
+}
+
+.ml-auto {
+  margin-left: auto;
+}

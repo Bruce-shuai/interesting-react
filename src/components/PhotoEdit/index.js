@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import SidebarItem from './SidebarItem';
 import Slider from './Slider';
 import defaultPhoto from '../../img/avatar.jpg';
+import {Link} from 'react-router-dom';
 // import anotherPhoto from '/static/media/avatar.c29a324f.jpg';
 export default function PhotoEdit() {
 
@@ -82,6 +83,9 @@ export default function PhotoEdit() {
     <div className="photo-edit-container-grid">
       <div className="photo-edit__title-container">
         <h1 className="photo-edit__title">Photo Edit</h1>
+      </div>
+      <div className="cancel tl-1 photo-edit__cancel">
+        <button className="btn btn--remove"><Link to="/">&times;</Link></button>
       </div>
       <div className="photo-edit__photo-container">
         <img className="photo-edit__photo" style={handlePhotoStyle()}/>

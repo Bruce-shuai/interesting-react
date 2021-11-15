@@ -1,3 +1,6 @@
+/* global */
+@import "global.css";
+
 /* single-style */
 @import "./single-style.css";
 
