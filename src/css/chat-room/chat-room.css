@@ -50,3 +50,22 @@
 .chat-user__folder:active {
   transform: scale(0.9);
 }
+
+.chat-room__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 0.5em;
+  /* background-color: green; */
+  width: 100%;
+}
+
+.chat-room__content-btn-container {
+  /* width: 80%; */
+  display: flex;
+  justify-content: center;
+}
+
+.chat-room-content-tabs {
+  width: 100%;
+}
