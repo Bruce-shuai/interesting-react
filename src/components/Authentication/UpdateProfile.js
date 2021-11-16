@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { UserOutlined, LockOutlined, EditOutlined, PhoneOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from "react-router-dom";
@@ -10,13 +10,22 @@ export default function UpdateProfile() {
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
   const [loading, setLoading] = useState(false)
-  const {currentUser, updateEmail, updatePassword} = useAuth();
-  const onFinish = ({email, password}) => {
+  const {currentUser, updateEmail, updatePassword, changeUserInfo} = useAuth();
+  const onFinish = ({email, password, displayName, phoneNumber}) => {
     setError('');
     setSuccess('');
     setLoading(true)
     // 这里的内容很有意思  要使用 Promise.All
     const promises = [];
+    if (displayName !== currentUser?.displayName && phoneNumber !== currentUser?.phoneNumber) {
+      /* 更新用户信息 */
+      const newUserInfo = {
+        displayName,
+        phoneNumber
+      }
+      console.log('newUserInfo', newUserInfo);
+      promises.push(changeUserInfo(newUserInfo))
+    }
     if (email !== currentUser.email) {
       promises.push(updateEmail(email))
     }
@@ -60,12 +69,37 @@ export default function UpdateProfile() {
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
         >
+        <div className="ta-center">(可修改任意一项)</div>  
+        <Form.Item
+          label="新用户名"
+          name="displayName"
+          rules={[
+            {
+              required: false,
+              message: '请输入你的用户名!',
+            },
+          ]}
+        >
+          <Input prefix={<EditOutlined className="site-form-item-icon" />} placeholder={`${currentUser ? currentUser.displayName : ''}`}/>
+        </Form.Item>
+        <Form.Item
+          label="新电话号码"
+          name="phoneNumber"
+          rules={[
+            {
+              required: false,
+              message: '请输入你的电话号码!',
+            },
+          ]}
+        >
+          <Input prefix={<PhoneOutlined className="site-form-item-icon" />} placeholder={`${currentUser ? currentUser.phoneNumber : ''}`}/>
+        </Form.Item>
         <Form.Item
           label="新邮箱"
           name="email"
           rules={[
             {
-              required: true,
+              required: false,
               message: '请输入你的邮箱!',
             },
           ]}

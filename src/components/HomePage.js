@@ -1,10 +1,11 @@
 import React, {useState} from 'react'
 import {Link} from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import { UserOutlined, FormOutlined, MessageOutlined, InstagramOutlined, FolderOpenOutlined, RobotOutlined } from '@ant-design/icons';
 export default function HomePage() {
   
   const [open, setOpen] = useState(false);
-
+  const {currentUser} = useAuth();
   function handleClickOpen() {
     setOpen(!open);
   }
@@ -20,7 +21,7 @@ export default function HomePage() {
           <li className="home__user_info-item">用户信息</li>
         </div>
       </div>
-      <div className="home__title">帅得乱七八糟</div>
+      <div className="home__title">欢迎用户：{`${currentUser.displayName}`}</div>
       <div className="home__content">
         <button className="btn btn--hollow"><FormOutlined /><Link to="/plans" className="font-color-black">计划列表</Link></button>
         <button className="btn btn--hollow"><InstagramOutlined /><Link to="/photo-edit" className="font-color-black">图片编辑</Link></button>

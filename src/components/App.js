@@ -41,6 +41,8 @@ function App() {
         <Route path="plans" element={<Plans />} />
         {/* 图片编辑页 */}
         <Route path="photo-edit" element={<PhotoEdit />} />
+        {/* 聊天室页 */}
+        
         {/* 404 Not Found */}
         <Route path="*" element={<NotFound />}/>
       </Routes>

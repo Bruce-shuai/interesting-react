@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react'
+import React, {useState, useEffect, useContext, useMemo} from 'react'
 import {auth} from '../firebase';
 
 // 为了让用户认证效果全局有效，必须使用context
@@ -14,6 +14,12 @@ export const useAuth = () => {
 export default function AuthProvider({children}) {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
+
+  // 更新用户信息(用户名和手机号码)
+  function changeUserInfo(nameAndPhone) {
+    const user = currentUser;
+    return user.updateProfile(nameAndPhone);
+  }
 
   function signup(email, password) {
     // 会返回一个promise...
@@ -43,10 +49,21 @@ export default function AuthProvider({children}) {
     })
     return unsubscribe;
     // 由于[] 是 空数组。则只会在组件被销毁的时候，这个返回值(unsubscribe)才会被执行
-  }, [])
+  }, [])  /* 这里原来是[] 现在换成了[currentUser]*/
+
+
+  // TODO:新增加的内容 可能有待修改...
+  const changeUser = useMemo(() => {return currentUser}, [currentUser?.displayName])
+  useEffect(() => {
+    setCurrentUser(changeUser);
+  }, [changeUser])
+
+
+
 
   const value = {
     currentUser,        // 用户信息
+    changeUserInfo,     // 更改用户信息
     signup,             // 注册方法
     login,              // 登录方法
     logout,             // 退出方法

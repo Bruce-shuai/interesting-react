@@ -13,7 +13,7 @@ export const RequireAuth = ({children, redirectTo}) => {
 
 export default function Dashboard() {
   let navigate = useNavigate();
-  const {currentUser, logout} = useAuth();
+  const {currentUser, logout, changeUserName} = useAuth();
   const [error, setError] = useState('');
   async function handleLogOut() {
     try {
@@ -27,13 +27,19 @@ export default function Dashboard() {
   return (
     <div className="auth__container">
       <div className="auth-profile">
+        <div className="cancel">  {/* 样式有待修改 */}
+          <button className="btn btn--remove"><Link to="/">&times;</Link></button>
+        </div>
         <div className="auth-profile__title">
         个人信息
         </div>
         {error && <div className="info info--error tr-2">{error}</div>}
+        {/* 这里的样式有待修改 */}
+        <div><strong>用户名:</strong>{currentUser?.displayName}</div>
+        <div><strong>手机号码:</strong>{currentUser?.phoneNumber}</div>
         <div><strong>邮箱:</strong>{currentUser?.email}</div>
         <button className="btn btn--hollow mt-1">    {/* 这里的样式有待修改 */}
-          <Link to="/update-profile">更改个人账户</Link>
+          <Link to="/update-profile">编辑信息</Link>
         </button>
         <button className="btn btn--hollow mt-1" onClick={() => {handleLogOut()}}>退出账户</button>
       </div>

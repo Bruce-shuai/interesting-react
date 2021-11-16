@@ -7,6 +7,10 @@
   margin-top: 1em;
 }
 
+.tr-1 {
+  transform: translate(10px);
+}
+
 .tr-2 {
   transform: translate(20px);
 }
