@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {Link} from 'react-router-dom';
-import { UserOutlined, FormOutlined, MessageOutlined, InstagramOutlined } from '@ant-design/icons';
+import { UserOutlined, FormOutlined, MessageOutlined, InstagramOutlined, FolderOpenOutlined, RobotOutlined } from '@ant-design/icons';
 export default function HomePage() {
   
   const [open, setOpen] = useState(false);
@@ -25,6 +25,9 @@ export default function HomePage() {
         <button className="btn btn--hollow"><FormOutlined /><Link to="/plans" className="font-color-black">计划列表</Link></button>
         <button className="btn btn--hollow"><InstagramOutlined /><Link to="/photo-edit" className="font-color-black">图片编辑</Link></button>
         <button className="btn btn--hollow"><MessageOutlined />聊天室</button>
+        <button className="btn btn--hollow"><FolderOpenOutlined />文件夹</button>
+        <button className="btn btn--hollow"><RobotOutlined />游戏厅</button>
+        <button className="btn btn--hollow">未完待续...</button>
       </div>
     </div>
   )
