@@ -27,6 +27,9 @@
 @import "./photo-edit/photo-edit-siderbar-item.css";
 @import "./photo-edit/photo-edit-slider.css";
 
+/* chat-room */
+@import "./chat-room/chat-room.css";
+
 /* 404 Not Found */
 @import "./404-not-found/not-found.css";
 

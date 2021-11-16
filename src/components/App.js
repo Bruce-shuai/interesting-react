@@ -9,7 +9,9 @@ import ForgetPassword from "./Authentication/ForgetPassword";
 import UpdateProfile from "./Authentication/UpdateProfile";
 import HomePage from "./HomePage";
 import NotFound from "./NotFound";
-
+import ChatRoom from "./ChatRoom/client/ChatRoom";
+import Contacts from "./ChatRoom/client/Contacts";
+import Conversations from "./ChatRoom/client/Conversations";
 // import PrivateRoute from "./PrivateRoute";
 function App() {
   document.title="Interesting React"
@@ -42,7 +44,10 @@ function App() {
         {/* 图片编辑页 */}
         <Route path="photo-edit" element={<PhotoEdit />} />
         {/* 聊天室页 */}
-        
+        <Route path="chat-room" element={<ChatRoom />}>
+          {/* <Route path="contacts" element={<Contacts />} />
+          <Route path="conversations" element={<Conversations />} /> */}
+        </Route>
         {/* 404 Not Found */}
         <Route path="*" element={<NotFound />}/>
       </Routes>

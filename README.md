@@ -26,6 +26,8 @@ photo edit 任意选择本地图片功能还未弄... (应该可以用 `antd` �
 
 准备进行聊天室的功能实现！
 
+//TODO 有空将前面我在一些文件里写的存放进 `localStorage` 里的代码用 `useLocalStorage` 来代替
+
 #### 思考
 
 我应该是给每个大模块都弄一个 `localStorage` 呢？还是所有模块统一一个 `localStorage` 呢？
