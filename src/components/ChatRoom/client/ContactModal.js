@@ -1,14 +1,23 @@
 import React from 'react'
 import { Form, Input, Button } from 'antd';
 import {useChatContacts} from '../../../context/ChatContactContext';
-
+import { v4 as uuidv4 } from 'uuid';
 export default function ContactModal({closeModal}) {
 
   const { createContact } = useChatContacts();
 
   const onFinish = (values) => {
     console.log('Success:', values);
-    createContact(values.username)
+    let signature = values.signature == null ? '' : values.signature;
+    // 随机头像
+    const user = ['julie', 'jaqueline', 'jane', 'jazebelle', 'jacques', 'jeri', 'jolee', 'james', 'jon', 'jack', 'jana']
+    const name =  user.sort(function(){
+      return Math.random() - 0.5;
+    })
+    const avatar = `https://joeschmoe.io//api/v1/${name[0]}`;
+
+    
+    createContact(uuidv4(), values.username, signature, avatar)
     closeModal();
   };
 
@@ -31,6 +40,13 @@ export default function ContactModal({closeModal}) {
         label="用户名"
         name="username"
         rules={[{ required: true, message: '请输入你的用户名!' }]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="个性签名"
+        name="signature"
+        rules={[{ required: false, message: '请输入你的个性签名!' }]}
       >
         <Input />
       </Form.Item>

@@ -28,6 +28,11 @@ photo edit 任意选择本地图片功能还未弄... (应该可以用 `antd` �
 
 //TODO 有空将前面我在一些文件里写的存放进 `localStorage` 里的代码用 `useLocalStorage` 来代替
 
+// 需要把 localStorage 里面的存储数据 规范化一下：
+当前这个写得名字太混乱了: <img width="250px" src="https://cdn.jsdelivr.net/gh/Bruce-shuai/picBed@master/Screen-Shot-2021-11-16-at-6.09.55-PM.png"/>
+
+建议聊天室里可以有一个更换头像的功能(等开发完项目后，再看心情更改...),就在折叠栏那里设置一个
+
 #### 思考
 
 我应该是给每个大模块都弄一个 `localStorage` 呢？还是所有模块统一一个 `localStorage` 呢？

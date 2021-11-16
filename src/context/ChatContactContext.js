@@ -9,10 +9,10 @@ export function useChatContacts() {
 
 export  function ChatContactProvider({children}) {
   const [contacts, setContacts] = useLocalStorage('chat-contacts', []);
-  
-  function createContact(username) {
+
+  function createContact(id, username, signature, avatar) {
     setContacts(prevContacts => {
-      return [...prevContacts, {username}]
+      return [...prevContacts, {id, username, signature, avatar}]
     })
   }
 

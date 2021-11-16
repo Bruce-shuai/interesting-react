@@ -29,6 +29,7 @@
 
 /* chat-room */
 @import "./chat-room/chat-room.css";
+@import "./chat-room/chat-contact-item.css";
 
 /* 404 Not Found */
 @import "./404-not-found/not-found.css";

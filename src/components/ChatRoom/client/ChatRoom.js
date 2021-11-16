@@ -48,7 +48,7 @@ export default function ChatRoom() {
       <div className={`chat-user ${fold ? '' : 'chat-user__folder--open'}`}>
         <div className={"chat-user__avatar"}>
           <Tooltip title={`${currentUser.displayName}`} placement="leftBottom">
-          <Avatar src="https://joeschmoe.io/api/v1/random" shape="square"/>
+          <Avatar src="https://joeschmoe.io/api/v1/jude" shape="square"/>
           </Tooltip>
         </div>
         <div className="chat-user__folder" onClick={handleClickFold}>

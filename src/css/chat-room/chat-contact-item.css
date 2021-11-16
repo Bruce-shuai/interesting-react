@@ -1,0 +1,23 @@
+.chat-contact-item {
+  width: 11em;
+  border: 1px solid gray;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  box-sizing: border-box;
+  margin-bottom: 0.2em;
+}
+
+.chat-contact-item__username {
+  font-size: 0.7rem;
+  /* color: grey; */
+  padding-left: 1em;
+  padding-top: 0.2em;
+  line-height: 0.5rem;
+}
+
+.chat-contact-item__signature {
+  font-size: 0.6rem;
+  color: grey;
+  padding-left: 1em;
+}
