@@ -24,7 +24,7 @@
   justify-content: space-between;
   background-color: hsla(0, 0%, 30%, 10%);
   border-right: 1px solid black;
-  margin-right: 0.5em;
+  /* margin-right: 0.5em; */
 }
 
 .chat-user__avatar {

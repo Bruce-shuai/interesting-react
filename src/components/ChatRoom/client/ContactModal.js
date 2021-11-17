@@ -1,6 +1,6 @@
 import React from 'react'
 import { Form, Input, Button } from 'antd';
-import {useChatContacts} from '../../../context/ChatContactContext';
+import {useChatContacts} from '../../../context/ChatContactContexts';
 import { v4 as uuidv4 } from 'uuid';
 export default function ContactModal({closeModal}) {
 

@@ -1,13 +1,13 @@
 import React, {useContext} from 'react'
 import { useLocalStorage } from '../hooks/useLocalStorage';
 
-const ChatContactContext = React.createContext();
+const ChatContactsContext = React.createContext();
 
 export function useChatContacts() {
-  return useContext(ChatContactContext);
+  return useContext(ChatContactsContext);
 }
 
-export  function ChatContactProvider({children}) {
+export  function ChatContactsProvider({children}) {
   const [contacts, setContacts] = useLocalStorage('chat-contacts', []);
 
   function createContact(id, username, signature, avatar) {
@@ -17,8 +17,8 @@ export  function ChatContactProvider({children}) {
   }
 
   return (
-    <ChatContactContext.Provider value={{ contacts, createContact}}>
+    <ChatContactsContext.Provider value={{ contacts, createContact}}>
       {children}
-    </ChatContactContext.Provider>
+    </ChatContactsContext.Provider>
   )
 }

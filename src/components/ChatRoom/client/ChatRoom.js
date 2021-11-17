@@ -7,7 +7,8 @@ import { UserOutlined, MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/
 import {useAuth} from '../../../context/AuthContext'
 import ContactModal from './ContactModal';
 import ConversationModal from './ConversationModal';
-import { ChatContactProvider } from '../../../context/ChatContactContext';
+import { ChatContactsProvider } from '../../../context/ChatContactContexts';
+import { ChatConversationsProvider } from '../../../context/ChatConversationsContext';
 export default function ChatRoom() {
 
   const { TabPane } = Tabs;
@@ -22,7 +23,7 @@ export default function ChatRoom() {
   }
 
   function callback(key) {
-    console.log(key);
+    // console.log(key);
     setIsContacts(key === 'contacts');
   }
 
@@ -43,12 +44,13 @@ export default function ChatRoom() {
   };
 
   return (
-  <ChatContactProvider>
+  <ChatContactsProvider>
+    <ChatConversationsProvider>
     <div className="chat-room__container">
       <div className={`chat-user ${fold ? '' : 'chat-user__folder--open'}`}>
         <div className={"chat-user__avatar"}>
           <Tooltip title={`${currentUser.displayName}`} placement="leftBottom">
-          <Avatar src="https://joeschmoe.io/api/v1/jude" shape="square"/>
+            <Avatar src="https://joeschmoe.io/api/v1/jude" shape="square"/>
           </Tooltip>
         </div>
         <div className="chat-user__folder" onClick={handleClickFold}>
@@ -72,11 +74,12 @@ export default function ChatRoom() {
         </div>
         <Modal title={isContacts ? '创建新联系人':'创建新聊天'} visible={isModalVisible}  onCancel={handleCancel} footer={null}>
           {
-            isContacts ?  <ContactModal closeModal={handleCancel}/> : <ConversationModal closeModal={handleClickModal}/> 
+            isContacts ?  <ContactModal closeModal={handleCancel}/> : <ConversationModal closeModal={handleCancel}/> 
           }
         </Modal>
       </div>
     </div>
-  </ChatContactProvider>
+    </ChatConversationsProvider>
+  </ChatContactsProvider>
   )
 }

@@ -1,0 +1,31 @@
+.Chat-Conversations__container {
+  display: flex;
+  /* min-height: 100%; */
+  height: 35em;
+}
+
+.Chat-Conversations__right {
+  width: 22%;
+  border-right: 1px solid grey;
+}
+
+.Chat-Conversations__left {
+  width: 78%;
+  padding-left: 1em;
+}
+
+.Chat-Conversations__item {
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid grey;
+  cursor: pointer;
+}
+
+.Chat-Conversations__item:hover {
+  background-color: hsl(200, 50%, 50%);
+  color: white;
+}
+
+.Chat-Conversations__item:active {
+  transform: scale(0.99);
+  border-radius: 4px;
+}

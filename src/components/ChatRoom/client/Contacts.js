@@ -1,9 +1,9 @@
 import React from 'react'
-import { useChatContacts } from '../../../context/ChatContactContext'
+import { useChatContacts } from '../../../context/ChatContactContexts'
 import ContactItem from './ContactItem';
 export default function Contacts() {
   const {contacts} = useChatContacts();
-  console.log('contacts', contacts);
+  // console.log('contacts', contacts);
   return (
     <div>
       {

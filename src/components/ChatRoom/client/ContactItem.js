@@ -1,5 +1,5 @@
 import React from 'react'
-import { Avatar, Image, Tooltip } from 'antd';
+import { Avatar, Tooltip } from 'antd';
 
 
 export default function ContactItem({contact}) {
@@ -10,7 +10,7 @@ export default function ContactItem({contact}) {
 
   return (
     <div className="chat-contact-item">
-      <Avatar src={`${contact.avatar}`} shape="square" />
+      <Avatar src={`${avatar}`} shape="square" />
       <div>
         <div className="chat-contact-item__username">{username}</div>
         <Tooltip placement="rightBottom" title={signature}>
