@@ -1,6 +1,7 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { Form, Input, Button, Divider } from 'antd';
 import { useChatConversations } from '../../../context/ChatConversationsContext';
+import MessageShow from './MessageShow';
 
 export default function Message() {
 
@@ -9,9 +10,9 @@ export default function Message() {
   function onFinish({text}) {
 
     // 强烈注意：这里的selectedConversation 中的recipients是格式化后的数据
-    // 但是传入sendMessage函数里面的recipients 只是包含有id数据的内容
- 
-    const recipients = selectedConversation.recipients.map((recipient) => recipient.id);   // TODO 这里的id属性的内容有点奇怪
+    // 但是传入sendMessage函数里面的recipients 只是包含有email数据的内容
+    console.log('recipients--', selectedConversation.recipients);
+    const recipients = selectedConversation.recipients.map((recipient) => recipient.email);   // TODO 传email 不传 id 了...
     sendMessage(recipients, text)
   }
 
@@ -20,8 +21,8 @@ export default function Message() {
     <div className="chat-message__container">
 
       {/* 信息显示部分 */}
-      <div>
-        Message
+      <div className="chat-message__show">
+        <MessageShow />
       </div>
 
       {/* 信息输入部分*/}

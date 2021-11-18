@@ -1,5 +1,5 @@
 import React from 'react'
-import { Avatar, Tooltip } from 'antd'
+import { Avatar } from 'antd'
 
 
 export default function ConversationItem({conversation}) {

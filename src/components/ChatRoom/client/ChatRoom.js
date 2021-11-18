@@ -20,6 +20,7 @@ export default function ChatRoom() {
    * 聊天室 最左边的折叠栏
    */
   function handleClickFold() {
+    console.log('currentUser', currentUser);
     SetFold(!fold);
   }
 

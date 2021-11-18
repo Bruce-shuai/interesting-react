@@ -6,17 +6,17 @@ export default function ContactModal({closeModal}) {
 
   const { createContact } = useChatContacts();
 
-  const onFinish = ({username, signature}) => {
+  const onFinish = ({username ,email ,signature}) => {
     signature = signature == null ? '' : signature;
 
     // 随机头像 --->  采用sort随机数组元素方法
-    const user = ['julie', 'jaqueline', 'jane', 'jazebelle', 'jacques', 'jeri', 'jolee', 'james', 'jon', 'jack', 'jana', 'jia', 'jean', 'jess', 'jerry']
-    const name =  user.sort(function(){
+    const userAvatar = ['julie', 'jaqueline', 'jane', 'jazebelle', 'jacques', 'jeri', 'jolee', 'james', 'jon', 'jack', 'jana', 'jia', 'jean', 'jess', 'jerry']
+    const avatarName =  userAvatar.sort(function(){
       return Math.random() - 0.5;
     })
-    const avatar = `https://joeschmoe.io/api/v1/${name[0]}`;
+    const avatar = `https://joeschmoe.io/api/v1/${avatarName[0]}`;
     
-    createContact(uuidv4(), username, signature, avatar)
+    createContact(uuidv4(), username, email, signature, avatar)
     closeModal();
   };
 
@@ -40,6 +40,13 @@ export default function ContactModal({closeModal}) {
         label="用户名"
         name="username"
         rules={[{ required: true, message: '请输入你的用户名!' }]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="邮箱"
+        name="email"
+        rules={[{ required: true, message: '请输入你的邮箱!' }]}
       >
         <Input />
       </Form.Item>

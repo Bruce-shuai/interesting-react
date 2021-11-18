@@ -1,10 +1,22 @@
 .chat-message__container {
   display: flex;
   min-height: 34em;
-  min-width: 34em;
+  min-width: 100%;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+}
+
+.chat-message__show {
+  /* height: inherit; */
+  width: 98%;
+  flex-grow: 1;
+  overflow: auto;
+  max-height: 26em;
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
 }
 
 .chat-message__form {

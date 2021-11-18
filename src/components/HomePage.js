@@ -9,6 +9,7 @@ export default function HomePage() {
   function handleClickOpen() {
     setOpen(!open);
   }
+  console.log('currentUser', currentUser);
   return (
     <div className="home__container">
       <div className="home__user-info">

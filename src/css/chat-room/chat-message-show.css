@@ -1,0 +1,41 @@
+.chat-message-show {
+  display: flex;
+  height: 100%;
+  /* background-color: yellow; */
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.chat-message-show__item {
+  display: flex;
+}
+
+.chat-message-show__info {
+  padding: 0.1em 0.5em;
+  /* margin: 1em 1.5em 0.5em 1.5em; */
+  margin-top: 1.8em;
+  border-radius: 5px;
+  color: aliceblue;
+  background-color: hsl(200, 50%, 50%);
+  position: relative;
+}
+
+/* 更多细节东西之后再扣 */
+.chat-message-show__info::after {
+  position: absolute;
+  content: "";
+  /* width: 30px;
+  height: 30px; */
+  border: 0.5em solid transparent;
+  border-left-color: hsl(200, 50%, 50%);
+  top: 1.1em;
+  left: 0.3em;
+  border-radius: 0.1em;
+  /* background-color: red; */
+}
+
+.chat-message-show__user {
+  font-size: 0.7rem;
+  margin-top: 2.4em;
+}

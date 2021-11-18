@@ -19,7 +19,7 @@ export default function Conversations() {
     <div className="chat-conversations__container">
 
       {/* 聊天内容左侧 <---> 聊天群 */}
-      <div className="chat-conversations__right">
+      <div className="chat-conversations__left">
       {
         conversations.map((conversation, index) => {
           // TODO: 等聊天室功能大体实现完成后，对于内容信息聊天的群组(conversation) 可以进行任意的删除
@@ -35,7 +35,7 @@ export default function Conversations() {
       </div>
 
       {/* 聊天内容右侧 <---> 聊天发送与内容显示 */}
-      <div className="chat-Conversations__left"><Message /></div>
+      <div className="chat-Conversations__right"><Message /></div>
     </div>
   )
 }

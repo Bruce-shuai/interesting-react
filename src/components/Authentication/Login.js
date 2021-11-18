@@ -4,6 +4,7 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Link } from "react-router-dom";
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from "react-router-dom";
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 export default function Login() {
   let navigate = useNavigate();
   const [error, setError] = useState('')
@@ -18,7 +19,6 @@ export default function Login() {
       setLoading(true)
       await login(email, password);  // 注意，这里返回的是promise
       setSuccess('登录成功!')
-      // navigate('/')
       setTimeout(() => {
         navigate('/')
       }, 1000)
