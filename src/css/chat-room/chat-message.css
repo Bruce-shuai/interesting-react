@@ -1,0 +1,19 @@
+.chat-message__container {
+  display: flex;
+  min-height: 34em;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.chat-message__form {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+.chat-message__text-area {
+  min-width: 10em !important;
+  width: 26em !important;
+  border-radius: 10px !important;
+  margin-right: auto;
+}
