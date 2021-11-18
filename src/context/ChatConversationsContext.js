@@ -3,6 +3,7 @@ import { useLocalStorage } from '../hooks/useLocalStorage';
 import { useChatContacts } from './ChatContactContexts';
 import { useAuth } from './AuthContext';
 
+
 const ChatConversationsContext = React.createContext();
 
 export function useChatConversations() {
@@ -15,7 +16,10 @@ export function ChatConversationsProvider({children}) {
    * recipients: 所选联系人的id信息
    * messages: 所选联系人讨论的信息
    */
-  const [conversations, setConversations] = useLocalStorage('chat-conversations', [])  // 但是全部存放在localStorage里面会不会让内存过大呢？
+  const [conversations, setConversations] = useLocalStorage('chat-conversations', [])  // 但是谈话内容全部存放在localStorage里面会不会让内存过大呢？
+
+  // console.log('-----', conversations);   // 我可以知道，conversations 是未格式化的
+
   /**
    * setectedConversationIndex 为选中的conversation
    */
@@ -30,11 +34,18 @@ export function ChatConversationsProvider({children}) {
   const formattedConversations = conversations.map((conversation, index) => {  // conversation 表示每一轮创建的新聊天
     const recipients = conversation.recipients.map(recipient => {
       // 从联系人id，找到联系人的所有信息
-      const contact = contacts.find((contact) => {
+      const contact = contacts.find(contact => {
        return contact.id === recipient
       })
-      return {id: recipient, username: contact.username, avatar: contact.avatar}
+      return {id: recipient, username: contact?.username, avatar: contact?.avatar}
     })
+
+    // const messages = conversation.messages.map(message => {
+    //   const contact = contacts.find(contact => {
+    //     return contact.id === message.sender
+    //   })
+    //   return {}
+    // })
     const selected = index === selectedConversationIndex
     return {...conversation, recipients, selected}   // 目的是让conversation里的属性 recipients不再仅仅包含联系人的id，还应该包含联系人的名称
   })
@@ -55,7 +66,7 @@ export function ChatConversationsProvider({children}) {
   function addMessageToConversation({recipients, text, sender}) {
     setConversations(prevConversations => {
       let madeChange = false;
-      const newMessage = {sender, text}
+      const newMessage = {sender, text};
       const newConversations = prevConversations.map(                
         conversation => {
           if (arrayEquality(conversation.recipients, recipients)) {  // 匹配对应的联系人...
@@ -66,14 +77,16 @@ export function ChatConversationsProvider({children}) {
               messages: [...conversation.messages, newMessage]
             }
           }
-        return conversation;
-      })
+          return conversation;
+        }
+      )
 
       if (madeChange) {
         return newConversations
       } else {
         return [
           ...prevConversations,
+          // 现在recipients 里的是未格式化的数据
           {recipients, messages: [newMessage]}
         ]
       }
@@ -82,13 +95,15 @@ export function ChatConversationsProvider({children}) {
 
   /**
    * 
-   * @param {*} recipients 用户的email
+   * @param {*} recipients 
    * @param {*} text 发送的数据
+   * @param {*} sender 用户的email
    */
   function sendMessage(recipients, text) {
     addMessageToConversation({recipients, text, sender:currentUser.email});   // 这里的email firebase里用户的email
   }
 
+  console.log('formattedConversations', formattedConversations);
   const value = {
     conversations: formattedConversations,    // 这里的conversations和useState里的conversations不太一样(这里的是格式化后的conversations)
     selectedConversation: formattedConversations[selectedConversationIndex],
@@ -107,7 +122,7 @@ export function ChatConversationsProvider({children}) {
 
 function arrayEquality(a, b) {
   if (a.length !== b.length) return false;
-  // 这里的sort 其实我的理解还不到位(按道理来说，这里不用 sort 也行...)
+  // 这里的sort目的是无视群内联系人的顺序
   a.sort();
   b.sort();
   // every 用法用得很不错...

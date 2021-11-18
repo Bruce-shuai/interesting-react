@@ -1,11 +1,18 @@
 import React, {useState} from 'react'
 import { Form, Input, Button, Divider } from 'antd';
+import { useChatConversations } from '../../../context/ChatConversationsContext';
 
 export default function Message() {
 
-  const [text, setText] = useState('');
+  // const [text, setText] = useState('');
+  const { selectedConversation, sendMessage } = useChatConversations();
   function onFinish({text}) {
-    setText(text)
+
+    // 强烈注意：这里的selectedConversation 中的recipients是格式化后的数据
+    // 但是传入sendMessage函数里面的recipients 只是包含有id数据的内容
+ 
+    const recipients = selectedConversation.recipients.map((recipient) => recipient.id);   // TODO 这里的id属性的内容有点奇怪
+    sendMessage(recipients, text)
   }
 
   return (
