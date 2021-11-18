@@ -1,8 +1,10 @@
 .chat-message__container {
   display: flex;
   min-height: 34em;
+  min-width: 34em;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 }
 
 .chat-message__form {
