@@ -6,21 +6,21 @@ export default function ContactModal({closeModal}) {
 
   const { createContact } = useChatContacts();
 
-  const onFinish = (values) => {
-    console.log('Success:', values);
-    let signature = values.signature == null ? '' : values.signature;
-    // 随机头像
-    const user = ['julie', 'jaqueline', 'jane', 'jazebelle', 'jacques', 'jeri', 'jolee', 'james', 'jon', 'jack', 'jana']
+  const onFinish = ({username, signature}) => {
+    signature = signature == null ? '' : signature;
+
+    // 随机头像 --->  采用sort随机数组元素方法
+    const user = ['julie', 'jaqueline', 'jane', 'jazebelle', 'jacques', 'jeri', 'jolee', 'james', 'jon', 'jack', 'jana', 'jia', 'jean', 'jess', 'jerry']
     const name =  user.sort(function(){
       return Math.random() - 0.5;
     })
-    const avatar = `https://joeschmoe.io//api/v1/${name[0]}`;
-
+    const avatar = `https://joeschmoe.io/api/v1/${name[0]}`;
     
-    createContact(uuidv4(), values.username, signature, avatar)
+    createContact(uuidv4(), username, signature, avatar)
     closeModal();
   };
 
+  // TODO: 这个等基本功能实现后再做...
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };

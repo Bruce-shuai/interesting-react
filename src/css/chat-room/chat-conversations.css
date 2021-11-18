@@ -1,33 +1,38 @@
-.Chat-Conversations__container {
+.chat-conversations__container {
   display: flex;
   /* min-height: 100%; */
   height: 35em;
 }
 
-.Chat-Conversations__right {
+.chat-conversations__right {
   width: 22%;
   min-width: 10em;
   border-right: 1px solid grey;
 }
 
-.Chat-Conversations__left {
+.chat-conversations__left {
   width: 78%;
   min-width: 20em;
   padding-left: 1em;
 }
 
-.Chat-Conversations__item {
+.chat-conversations__item {
   padding-bottom: 0.5em;
   border-bottom: 1px solid grey;
   cursor: pointer;
 }
 
-.Chat-Conversations__item:hover {
+.chat-conversations__item:hover {
   background-color: hsl(200, 50%, 50%);
   color: white;
 }
 
-.Chat-Conversations__item:active {
+.chat-conversations__item:active {
   transform: scale(0.99);
   border-radius: 4px;
+}
+
+.chat-conversations__item--selected {
+  background-color: hsl(200, 50%, 50%);
+  color: white;
 }
