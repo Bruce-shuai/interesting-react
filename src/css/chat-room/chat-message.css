@@ -16,7 +16,7 @@
   /* background-color: red; */
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .chat-message__form {

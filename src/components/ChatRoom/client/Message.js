@@ -11,7 +11,7 @@ export default function Message() {
 
     // 强烈注意：这里的selectedConversation 中的recipients是格式化后的数据
     // 但是传入sendMessage函数里面的recipients 只是包含有email数据的内容
-    console.log('recipients--', selectedConversation.recipients);
+    // console.log('recipients--', selectedConversation.recipients);
     const recipients = selectedConversation.recipients.map((recipient) => recipient.email);   // TODO 传email 不传 id 了...
     sendMessage(recipients, text)
   }

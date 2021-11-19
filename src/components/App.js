@@ -4,7 +4,7 @@ import Signup from "./Authentication/Signup";
 import Login from "./Authentication/Login";
 import AuthProvider from "../context/AuthContext";
 import Dashboard, {RequireAuth} from "./Authentication/Dashboard";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import ForgetPassword from "./Authentication/ForgetPassword";
 import UpdateProfile from "./Authentication/UpdateProfile";
 import HomePage from "./HomePage";

@@ -1,6 +1,6 @@
 .cancel {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: flex-end;
   transform: translate(2em, -1em);
 }

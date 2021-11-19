@@ -88,7 +88,7 @@ export default function PhotoEdit() {
         <button className="btn btn--remove"><Link to="/">&times;</Link></button>
       </div>
       <div className="photo-edit__photo-container">
-        <img className="photo-edit__photo" style={handlePhotoStyle()}/>
+        <img className="photo-edit__photo" style={handlePhotoStyle()} alt="photo-edit"/>
         {/* <div className="photo-edit__photo-choose">
           <label htmlFor="choose-photo" className="btn btn--primary">选择图片</label>
           <input id="choose-photo" className="photo-edit__photo-file" type="file" accept=".jpg, .jpeg, .png" 

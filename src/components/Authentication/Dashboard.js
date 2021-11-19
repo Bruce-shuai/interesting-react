@@ -13,7 +13,7 @@ export const RequireAuth = ({children, redirectTo}) => {
 
 export default function Dashboard() {
   let navigate = useNavigate();
-  const {currentUser, logout, changeUserName} = useAuth();
+  const {currentUser, logout} = useAuth();
   const [error, setError] = useState('');
   async function handleLogOut() {
     try {

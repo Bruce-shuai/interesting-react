@@ -15,6 +15,6 @@ export default function ChatWrapper() {
           <ChatRoom />
         </ChatConversationsProvider>
       </ChatContactsProvider>
-    </SocketProvider>
+    </SocketProvider>  
   )
 }

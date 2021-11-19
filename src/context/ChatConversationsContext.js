@@ -1,9 +1,8 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext, useEffect, useState, useCallback} from 'react'
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { useChatContacts } from './ChatContactContexts';
 import { useAuth } from './AuthContext';
 import { useSocket } from './SocketContext';
-
 
 const ChatConversationsContext = React.createContext();
 
@@ -73,7 +72,7 @@ export function ChatConversationsProvider({children}) {
   }
 
   
-  function addMessageToConversation({recipients, text, sender}) {
+  const addMessageToConversation = useCallback(({recipients, text, sender}) => {
     setConversations(prevConversations => {
       let madeChange = false;
       const newMessage = {sender, text};
@@ -101,7 +100,14 @@ export function ChatConversationsProvider({children}) {
         ]
       }
     })
-  }
+  }, [setConversations])
+
+  useEffect(() => {
+    if (socket == null) return 
+    socket.on('receive-message', addMessageToConversation)
+
+    return () => socket.off('receive-message')
+  }, [socket, addMessageToConversation])
 
   /**
    * 

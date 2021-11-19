@@ -7,12 +7,12 @@ export function useSocket() {
   return useContext(SocketContext)
 }
 
-export function SocketProvider({ id, children }) {
+export function SocketProvider({ id, children }) {  // 这里的id是用户的email
   const [socket, setSocket] = useState()
 
   useEffect(() => {
     const newSocket = io(
-      'http://localhost:5001',
+      'http://localhost:5004',
       { query: { id } }
     )
     setSocket(newSocket)
