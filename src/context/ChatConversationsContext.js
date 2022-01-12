@@ -71,7 +71,7 @@ export function ChatConversationsProvider({children}) {
     })
   }
 
-  
+  // 这里的useCallback 以及回调等操作好好研究研究
   const addMessageToConversation = useCallback(({recipients, text, sender}) => {
     setConversations(prevConversations => {
       let madeChange = false;

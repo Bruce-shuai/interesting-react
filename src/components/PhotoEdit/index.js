@@ -4,13 +4,16 @@ import Slider from './Slider';
 import defaultPhoto from '../../img/avatar.jpg';
 import {Link} from 'react-router-dom';
 // import anotherPhoto from '/static/media/avatar.c29a324f.jpg';
+
+
+
 export default function PhotoEdit() {
 
   const [options, setOptions] = useState(DEFAULT_OPTIONS);
-  // const [photo, setPhoto] = useState(defaultPhoto);
+  const [photo, setPhoto] = useState(defaultPhoto);
   const [sidebarIndex, SetSidebarIndex] = useState(0);
   const checkedOption = options[sidebarIndex];     // 这里的用法比较有意思...
-
+  const [inputRef, setInputRef] = useState(null);
 
   /**
    * 将Photo Edit的数据存放在localStorage里的key值里去
@@ -59,14 +62,13 @@ export default function PhotoEdit() {
   function handlePhotoStyle() {
     const filter = options.map(option => `${option.property}(${option.value}${option.unit}) `).join('');
     return {
-      backgroundImage: `url(${defaultPhoto})`,
-      // backgroundImage: import(photo),
+      backgroundImage: `url(${photo})`,
       filter: filter,
     }
   }
 
   // 获取本地图片的功能目前还无法实现 
-
+// --------------------------------------------------------------------------------
   // import('../../img/avatar.jpg').then(({default:file}) => {
   //   console.log('file', file);
   //   setPhoto(file);
@@ -79,6 +81,10 @@ export default function PhotoEdit() {
   //   setPhoto(photoUrl);
   // }
 
+
+// --------------------------------------------------------------------------------
+
+
   return (
     <div className="photo-edit-container-grid">
       <div className="photo-edit__title-container">
@@ -88,7 +94,7 @@ export default function PhotoEdit() {
         <button className="btn btn--remove"><Link to="/">&times;</Link></button>
       </div>
       <div className="photo-edit__photo-container">
-        <img className="photo-edit__photo" style={handlePhotoStyle()} alt="photo-edit"/>
+        <div className="photo-edit__photo" style={handlePhotoStyle()}/>
         {/* <div className="photo-edit__photo-choose">
           <label htmlFor="choose-photo" className="btn btn--primary">选择图片</label>
           <input id="choose-photo" className="photo-edit__photo-file" type="file" accept=".jpg, .jpeg, .png" 
@@ -97,6 +103,20 @@ export default function PhotoEdit() {
             }}
           />   
         </div> */}
+        <input 
+          type="file" accept="image/*" name="选择图片"
+          onChange={e => {
+            console.log(e);
+            // console.log(e.target.files[0]);
+            // 从获取的文件对象中读取图片的数据(获取到当前图片的BASE64码)
+            let fileReader = new FileReader();
+            fileReader.readAsDataURL(e.target.files[0]);
+            fileReader.onload = e => {
+              console.log(e.target.result);
+              setPhoto(e.target.result)
+            }
+          }}
+        />
       </div>
       <div className="photo-edit__side-bar">
         {

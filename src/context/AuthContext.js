@@ -20,7 +20,6 @@ export default function AuthProvider({children}) {
     const user = currentUser;
     return user.updateProfile(nameAndPhone);
   }
-
   function signup(email, password) {
     // 会返回一个promise...
     return auth.createUserWithEmailAndPassword(email, password);

@@ -7,10 +7,11 @@ import Dashboard, {RequireAuth} from "./Authentication/Dashboard";
 import { Routes, Route } from "react-router-dom";
 import ForgetPassword from "./Authentication/ForgetPassword";
 import UpdateProfile from "./Authentication/UpdateProfile";
+import CloudDisk from "./CloudDisk/Index";
 import HomePage from "./HomePage";
 import NotFound from "./NotFound";
 import ChatWrapper from "./ChatRoom/client/Index";
-
+import Folder from '../components/CloudDisk/Folder'
 // import PrivateRoute from "./PrivateRoute";
 function App() {
   document.title="Interesting React"
@@ -34,13 +35,33 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route path="forget-password" element={<ForgetPassword />} />
         <Route path="update-profile" element={<UpdateProfile />} />
-        {/* // TODO: 下面这些路由都是需要重定向的(只有用户登录后才能使用...) */}
+        {/* 下面四个页面皆有重定向功能 */}
         {/* 计划列表页 */}
-        <Route path="plans" element={<Plans />} />
+        <Route path="/plans" element={
+          <RequireAuth redirectTo="/login">
+            <Plans />
+          </RequireAuth>
+        } />
         {/* 图片编辑页 */}
-        <Route path="photo-edit" element={<PhotoEdit />} />
+        <Route path="photo-edit" element={
+          <RequireAuth redirectTo="/login">
+            <PhotoEdit />
+          </RequireAuth>
+        } />
         {/* 聊天室页 */}
-        <Route path="chat-room" element={<ChatWrapper />} />
+        <Route path="chat-room" element={
+          <RequireAuth redirectTo="/login">
+            <ChatWrapper />
+          </RequireAuth>
+        } />
+        {/* 文件管理页 */}
+        <Route path="cloud-disk" element={
+          <RequireAuth redirectTo="/login">
+            <CloudDisk />
+          </RequireAuth>
+        }>
+          <Route path=":folderId" element={<Folder/>} />
+        </Route>
         {/* 404 Not Found */}
         <Route path="*" element={<NotFound />}/>
       </Routes>
